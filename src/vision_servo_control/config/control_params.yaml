@@ -1,0 +1,54 @@
+align_controller:
+  ros__parameters:
+    img_cx: 341.666
+    h_avg_target: 265.0       # 待标定：目标距离下 h_avg
+
+    tol_x: 5.0
+    tol_yaw: 0.02
+    tol_z: 10.0
+
+    dead_x: 5.0
+    dead_yaw: 0.01
+    dead_z: 5.0
+
+    kp_x: 0.003
+    kp_yaw: 1.5
+    kp_z: 0.002
+
+    vmax: 0.15
+    wmax: 0.5
+
+    aligned_frames: 5
+    servo_timeout: 10.0       
+
+    # ═════════════════════════════════════════════════════════════
+    # ★★★ 接近阶段参数（需要标定和调整） ★★★
+    # ═════════════════════════════════════════════════════════════
+    # 相机到夹爪尖端的距离
+    #   = 相机到车头距离 + 夹爪长度
+    #   当前：470 + 170 = 640
+    #   ⚠️ 换相机位置/换夹爪时要改
+    grab_distance_mm: 640.0
+
+    # 接近阶段的额外余量
+    #   实际距离 > (grab_distance + margin) 才回到接近
+    #   ⚠️ 防止在阈值附近震荡，可以调大/调小
+    approach_margin_mm: 100.0
+
+    # 接近阶段最大速度（m/s）
+    #   ⚠️ 调大→靠近更快，但可能冲过头
+    approach_vmax: 0.25
+
+    # 接近阶段增益
+    #   ⚠️ 调大→靠近更快，但可能震荡
+    kp_z_approach: 0.5
+#  参数	                        含义	              当前值	             怎么调
+# grab_distance_mm	      相机到夹爪尖端距离	        640	          测量实际值：相机到车头距离 + 夹爪长度
+#h_avg_target       在grab_distance_mm 处的 h_avg	  265	          标定：把立方体放在相机前 640mm 处，读 h_avg
+#approach_margin_mm	        接近阈值余量	           100	         调大→更早进精细对齐；调小→更靠保守
+#approach_vmax	           接近最大速度	             0.25	         调大→更快；调小→更稳
+#kp_z_approach	              接近增益	             0.5	        调大→更快；太大→震荡
+#servo_timeout	               总超时	              10.0	        调大→允许长时间接近
+#dead_x	                      横向死区	             5.0	        调大→更稳但粗糙
+#kp_x / kp_yaw / kp_z	      对齐阶段增益	        0.003/1.5/0.002	 现场调
+#vmax / wmax	              对齐阶段限速	          0.15/0.5	     现场调

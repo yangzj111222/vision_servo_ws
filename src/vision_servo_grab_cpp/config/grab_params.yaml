@@ -1,0 +1,9 @@
+grab_node:
+  ros__parameters:
+    default_extend_mm: 167.0
+    default_close_force_pct: 60.0
+    default_speed_pct: 80.0
+    extend_timeout_s: 3.0
+    close_timeout_s: 2.0
+    retract_timeout_s: 3.0
+    auto_start_on_aligned: true

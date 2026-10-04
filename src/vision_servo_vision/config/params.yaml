@@ -1,0 +1,14 @@
+vision_node:
+  ros__parameters:
+    engine_path: "/home/yzj/vision_servo_ws/src/vision_servo_vision/models/cube_pose.engine"
+    conf_threshold: 0.5
+    image_width: 640
+    image_height: 480
+    img_cx: 341.666
+    img_cy: 232.995
+    ema_alpha: 0.3
+    lost_tolerance: 10
+    infer_interval: 1
+    image_topic: "/ascamera/AsCamera/rgb0/image"
+    num_kpts: 4          
+    publish_viz: true    
